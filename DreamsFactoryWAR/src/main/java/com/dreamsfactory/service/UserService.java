@@ -45,14 +45,14 @@ public class UserService {
 	}
 
 	@GET
-	@Path("/{name}")
+	@Path("/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public Response findByName(@PathParam("name") String name) {
+	public Response findByName(@PathParam("id") Integer id) {
 		ResponseDTO response = new ResponseDTO();
 
 		try {
 			response.setSuccess(true);
-			response.setPayLoad(userSession.getUser(name));
+			response.setPayLoad(userSession.findById(id));
 		} catch (Exception e) {
 			response.setSuccess(false);
 			response.setMessage(e.getMessage());

@@ -13,8 +13,8 @@ public class DreamsFactoryConfig extends Application {
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> classes = new HashSet<>();
 
-//		classes.add(com.dreamsfactory.config.RequestParamFilter.class);
-//		classes.add(com.dreamsfactory.config.ResponseFilter.class);
+		classes.add(com.dreamsfactory.config.RequestParamFilter.class);
+		classes.add(com.dreamsfactory.config.ResponseFilter.class);
 
 		classes.add(com.dreamsfactory.service.UserService.class);
 

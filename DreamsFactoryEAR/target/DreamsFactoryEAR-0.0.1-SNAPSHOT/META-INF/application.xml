@@ -10,7 +10,7 @@
 	<module>
 		<web>
 			<web-uri>DreamsFactoryWAR-0.0.1-SNAPSHOT.war</web-uri>
-			<context-root>/DreamsFactory</context-root>
+			<context-root>/DreamsFactoryWAR</context-root>
 		</web>
 	</module>
 	<library-directory>lib</library-directory>

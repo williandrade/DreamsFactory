@@ -1,29 +1,28 @@
 package com.dreamsfactory.session;
 
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import com.dreamsfactory.dto.UserDTO;
+import com.dreamsfactory.dao.UserDAO;
+import com.dreamsfactory.entity.User;
 
 @Stateless
 @LocalBean
 public class UserSession {
 
-	public List<String> findAll() {
-		return Arrays.asList("OI", "Ola", "Hello");
+	@EJB
+	private UserDAO userDAO;
+
+	public Set<User> findAll() {
+		return userDAO.findAll();
 	}
 
-	public UserDTO getUser(String name) {
-		UserDTO result = new UserDTO();
-
-		result.setName(name);
-		result.setBirthDate(new Date());
-
-		return result;
+	public User findById(Integer id) {
+		return userDAO.findById(id);
 	}
 
 }
