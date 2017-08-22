@@ -1,0 +1,9 @@
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/UserDTO.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/handler/UserRequestHandler.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/UserSession.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/util/RestReponseUtil.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/util/Constants.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/util/GsonConverterUtil.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/strategy/AnnotationExclusionStrategy.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/ResponseDTO.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/annotation/OpenMethodAnnotation.java
