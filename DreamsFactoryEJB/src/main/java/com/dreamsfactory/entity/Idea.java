@@ -37,193 +37,201 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "IDEA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Idea.findAll", query = "SELECT i FROM Idea i")
-    , @NamedQuery(name = "Idea.findById", query = "SELECT i FROM Idea i WHERE i.id = :id")
-    , @NamedQuery(name = "Idea.findByName", query = "SELECT i FROM Idea i WHERE i.name = :name")
-    , @NamedQuery(name = "Idea.findByShortDescription", query = "SELECT i FROM Idea i WHERE i.shortDescription = :shortDescription")
-    , @NamedQuery(name = "Idea.findByCreationDate", query = "SELECT i FROM Idea i WHERE i.creationDate = :creationDate")})
+@NamedQueries({ @NamedQuery(name = "Idea.findAll", query = "SELECT i FROM Idea i"),
+		@NamedQuery(name = "Idea.findById", query = "SELECT i FROM Idea i WHERE i.id = :id"),
+		@NamedQuery(name = "Idea.findByName", query = "SELECT i FROM Idea i WHERE i.name = :name"),
+		@NamedQuery(name = "Idea.findByShortDescription", query = "SELECT i FROM Idea i WHERE i.shortDescription = :shortDescription"),
+		@NamedQuery(name = "Idea.findByCreationDate", query = "SELECT i FROM Idea i WHERE i.creationDate = :creationDate") })
 public class Idea implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
-    private Integer id;
-    @Basic(optional = false)
-    @Column(name = "NAME")
-    private String name;
-    @Basic(optional = false)
-    @Column(name = "SHORT_DESCRIPTION")
-    private String shortDescription;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "DESCRIPTION")
-    private String description;
-    @Basic(optional = false)
-    @Column(name = "CREATION_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creationDate;
-    @JoinTable(name = "IDEA_TAG", joinColumns = {
-        @JoinColumn(name = "IDEA_ID", referencedColumnName = "ID")}, inverseJoinColumns = {
-        @JoinColumn(name = "TAGS_ID", referencedColumnName = "ID")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Tag> tagSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
-    private Set<SubscribeIdea> subscribeIdeaSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
-    private Set<LikeIdea> likeIdeaSet;
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User userId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
-    private Set<LogIdea> logIdeaSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
-    private Set<FollowIdea> followIdeaSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
-    private Set<Ressource> ressourceSet;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ID")
+	private Integer id;
+	@Column(name = "NAME")
+	private String name;
+	@Basic(optional = false)
+	@Column(name = "SHORT_DESCRIPTION")
+	private String shortDescription;
+	@Basic(optional = false)
+	@Lob
+	@Column(name = "DESCRIPTION")
+	private String description;
+	@Basic(optional = false)
+	@Column(name = "CREATION_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date creationDate;
+	@JoinColumn(name = "IDEA_TYPE_ID", referencedColumnName = "ID")
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	private IdeaType ideaType;
+	@JoinTable(name = "IDEA_TAG", joinColumns = {
+			@JoinColumn(name = "IDEA_ID", referencedColumnName = "ID") }, inverseJoinColumns = {
+					@JoinColumn(name = "TAGS_ID", referencedColumnName = "ID") })
+	@ManyToMany(fetch = FetchType.LAZY)
+	private Set<Tag> tagSet;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
+	private Set<SubscribeIdea> subscribeIdeaSet;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
+	private Set<LikeIdea> likeIdeaSet;
+	@JoinColumn(name = "USER_ID", referencedColumnName = "ID")
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	private User userId;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
+	private Set<LogIdea> logIdeaSet;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
+	private Set<FollowIdea> followIdeaSet;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
+	private Set<Ressource> ressourceSet;
 
-    public Idea() {
-    }
+	public Idea() {
+	}
 
-    public Idea(Integer id) {
-        this.id = id;
-    }
+	public Idea(Integer id) {
+		this.id = id;
+	}
 
-    public Idea(Integer id, String name, String shortDescription, String description, Date creationDate) {
-        this.id = id;
-        this.name = name;
-        this.shortDescription = shortDescription;
-        this.description = description;
-        this.creationDate = creationDate;
-    }
+	public Idea(Integer id, String name, String shortDescription, String description, Date creationDate) {
+		this.id = id;
+		this.name = name;
+		this.shortDescription = shortDescription;
+		this.description = description;
+		this.creationDate = creationDate;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
+	public String getShortDescription() {
+		return shortDescription;
+	}
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
+	public Date getCreationDate() {
+		return creationDate;
+	}
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 
-    @XmlTransient
-    public Set<Tag> getTagSet() {
-        return tagSet;
-    }
+	@XmlTransient
+	public Set<Tag> getTagSet() {
+		return tagSet;
+	}
 
-    public void setTagSet(Set<Tag> tagSet) {
-        this.tagSet = tagSet;
-    }
+	public void setTagSet(Set<Tag> tagSet) {
+		this.tagSet = tagSet;
+	}
 
-    @XmlTransient
-    public Set<SubscribeIdea> getSubscribeIdeaSet() {
-        return subscribeIdeaSet;
-    }
+	@XmlTransient
+	public Set<SubscribeIdea> getSubscribeIdeaSet() {
+		return subscribeIdeaSet;
+	}
 
-    public void setSubscribeIdeaSet(Set<SubscribeIdea> subscribeIdeaSet) {
-        this.subscribeIdeaSet = subscribeIdeaSet;
-    }
+	public void setSubscribeIdeaSet(Set<SubscribeIdea> subscribeIdeaSet) {
+		this.subscribeIdeaSet = subscribeIdeaSet;
+	}
 
-    @XmlTransient
-    public Set<LikeIdea> getLikeIdeaSet() {
-        return likeIdeaSet;
-    }
+	@XmlTransient
+	public Set<LikeIdea> getLikeIdeaSet() {
+		return likeIdeaSet;
+	}
 
-    public void setLikeIdeaSet(Set<LikeIdea> likeIdeaSet) {
-        this.likeIdeaSet = likeIdeaSet;
-    }
+	public void setLikeIdeaSet(Set<LikeIdea> likeIdeaSet) {
+		this.likeIdeaSet = likeIdeaSet;
+	}
 
-    public User getUserId() {
-        return userId;
-    }
+	public User getUserId() {
+		return userId;
+	}
 
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
+	public void setUserId(User userId) {
+		this.userId = userId;
+	}
 
-    @XmlTransient
-    public Set<LogIdea> getLogIdeaSet() {
-        return logIdeaSet;
-    }
+	@XmlTransient
+	public Set<LogIdea> getLogIdeaSet() {
+		return logIdeaSet;
+	}
 
-    public void setLogIdeaSet(Set<LogIdea> logIdeaSet) {
-        this.logIdeaSet = logIdeaSet;
-    }
+	public void setLogIdeaSet(Set<LogIdea> logIdeaSet) {
+		this.logIdeaSet = logIdeaSet;
+	}
 
-    @XmlTransient
-    public Set<FollowIdea> getFollowIdeaSet() {
-        return followIdeaSet;
-    }
+	@XmlTransient
+	public Set<FollowIdea> getFollowIdeaSet() {
+		return followIdeaSet;
+	}
 
-    public void setFollowIdeaSet(Set<FollowIdea> followIdeaSet) {
-        this.followIdeaSet = followIdeaSet;
-    }
+	public void setFollowIdeaSet(Set<FollowIdea> followIdeaSet) {
+		this.followIdeaSet = followIdeaSet;
+	}
 
-    @XmlTransient
-    public Set<Ressource> getRessourceSet() {
-        return ressourceSet;
-    }
+	@XmlTransient
+	public Set<Ressource> getRessourceSet() {
+		return ressourceSet;
+	}
 
-    public void setRessourceSet(Set<Ressource> ressourceSet) {
-        this.ressourceSet = ressourceSet;
-    }
+	public void setRessourceSet(Set<Ressource> ressourceSet) {
+		this.ressourceSet = ressourceSet;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
+	public IdeaType getIdeaType() {
+		return ideaType;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Idea)) {
-            return false;
-        }
-        Idea other = (Idea) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
+	public void setIdeaType(IdeaType ideaType) {
+		this.ideaType = ideaType;
+	}
 
-    @Override
-    public String toString() {
-        return "com.dreamsfactory.entity.Idea[ id=" + id + " ]";
-    }
-    
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (!(object instanceof Idea)) {
+			return false;
+		}
+		Idea other = (Idea) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "com.dreamsfactory.entity.Idea[ id=" + id + " ]";
+	}
+
 }

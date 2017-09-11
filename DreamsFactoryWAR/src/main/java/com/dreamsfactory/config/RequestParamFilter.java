@@ -2,8 +2,7 @@ package com.dreamsfactory.config;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.concurrent.TimeoutException;
-import javax.ejb.EJB;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.container.ContainerRequestContext;

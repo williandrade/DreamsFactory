@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.dreamsfactory.annotation.OpenMethodAnnotation;
 import com.dreamsfactory.dto.ResponseDTO;
 import com.dreamsfactory.handler.UserRequestHandler;
 import com.dreamsfactory.session.UserSession;

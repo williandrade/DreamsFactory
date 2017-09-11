@@ -24,8 +24,7 @@ public class GsonConverterUtil {
 		return gson.toJson(obj);
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object fromJson(String json, Class clazz) {
+	public Object fromJson(String json, Class<?> clazz) {
 		return gson.fromJson(json, clazz);
 	}
 
