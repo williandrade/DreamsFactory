@@ -17,11 +17,12 @@ public class DreamsFactoryConfig extends Application {
 		classes.add(com.dreamsfactory.config.ResponseFilter.class);
 
 		classes.add(com.dreamsfactory.service.UserService.class);
-		
+
 		classes.add(com.dreamsfactory.service.IdeaService.class);
 		classes.add(com.dreamsfactory.service.IdeaTypeService.class);
-		
+
 		classes.add(com.dreamsfactory.service.TagService.class);
+		classes.add(com.dreamsfactory.service.LogIdeaService.class);
 
 		return classes;
 	}
