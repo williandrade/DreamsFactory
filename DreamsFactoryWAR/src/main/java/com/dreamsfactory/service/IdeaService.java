@@ -52,7 +52,7 @@ public class IdeaService {
 
 		try {
 			response.setSuccess(true);
-			response.setPayLoad(ideaSession.create(ideaCreateDTO));
+			response.setPayLoad(ideaSession.create(ideaCreateDTO, userRequestHandler.getUser()));
 		} catch (Exception e) {
 			response.setSuccess(false);
 			response.setMessage(e.getMessage());

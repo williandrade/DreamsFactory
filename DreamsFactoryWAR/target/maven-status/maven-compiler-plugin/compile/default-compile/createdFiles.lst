@@ -1,8 +1,11 @@
 com/dreamsfactory/config/RequestParamFilter.class
+com/dreamsfactory/service/LoginService.class
+com/dreamsfactory/service/FollowIdeaService.class
 com/dreamsfactory/service/IdeaTypeService.class
 com/dreamsfactory/service/TagService.class
 com/dreamsfactory/service/IdeaService.class
 com/dreamsfactory/config/DreamsFactoryConfig.class
 com/dreamsfactory/config/ResponseFilter.class
 com/dreamsfactory/service/LogIdeaService.class
+com/dreamsfactory/service/LikeIdeaService.class
 com/dreamsfactory/service/UserService.class

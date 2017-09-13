@@ -30,109 +30,107 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "FOLLOW_IDEA")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "FollowIdea.findAll", query = "SELECT f FROM FollowIdea f")
-    , @NamedQuery(name = "FollowIdea.findById", query = "SELECT f FROM FollowIdea f WHERE f.id = :id")
-    , @NamedQuery(name = "FollowIdea.findByFollowDate", query = "SELECT f FROM FollowIdea f WHERE f.followDate = :followDate")
-    , @NamedQuery(name = "FollowIdea.findByUnfollowDate", query = "SELECT f FROM FollowIdea f WHERE f.unfollowDate = :unfollowDate")})
+@NamedQueries({ @NamedQuery(name = "FollowIdea.findAll", query = "SELECT f FROM FollowIdea f"),
+		@NamedQuery(name = "FollowIdea.findById", query = "SELECT f FROM FollowIdea f WHERE f.id = :id"),
+		@NamedQuery(name = "FollowIdea.findByFollowDate", query = "SELECT f FROM FollowIdea f WHERE f.followDate = :followDate"),
+		@NamedQuery(name = "FollowIdea.findByUnfollowDate", query = "SELECT f FROM FollowIdea f WHERE f.unfollowDate = :unfollowDate") })
 public class FollowIdea implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
-    private Integer id;
-    @Basic(optional = false)
-    @Column(name = "FOLLOW_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date followDate;
-    @Basic(optional = false)
-    @Column(name = "UNFOLLOW_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date unfollowDate;
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User userId;
-    @JoinColumn(name = "IDEA_ID", referencedColumnName = "ID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Idea ideaId;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ID")
+	private Integer id;
+	@Basic(optional = false)
+	@Column(name = "FOLLOW_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date followDate;
+	@Column(name = "UNFOLLOW_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date unfollowDate;
+	@JoinColumn(name = "USER_ID", referencedColumnName = "ID")
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	private User userId;
+	@JoinColumn(name = "IDEA_ID", referencedColumnName = "ID")
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	private Idea ideaId;
 
-    public FollowIdea() {
-    }
+	public FollowIdea() {
+	}
 
-    public FollowIdea(Integer id) {
-        this.id = id;
-    }
+	public FollowIdea(Integer id) {
+		this.id = id;
+	}
 
-    public FollowIdea(Integer id, Date followDate, Date unfollowDate) {
-        this.id = id;
-        this.followDate = followDate;
-        this.unfollowDate = unfollowDate;
-    }
+	public FollowIdea(Integer id, Date followDate, Date unfollowDate) {
+		this.id = id;
+		this.followDate = followDate;
+		this.unfollowDate = unfollowDate;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Date getFollowDate() {
-        return followDate;
-    }
+	public Date getFollowDate() {
+		return followDate;
+	}
 
-    public void setFollowDate(Date followDate) {
-        this.followDate = followDate;
-    }
+	public void setFollowDate(Date followDate) {
+		this.followDate = followDate;
+	}
 
-    public Date getUnfollowDate() {
-        return unfollowDate;
-    }
+	public Date getUnfollowDate() {
+		return unfollowDate;
+	}
 
-    public void setUnfollowDate(Date unfollowDate) {
-        this.unfollowDate = unfollowDate;
-    }
+	public void setUnfollowDate(Date unfollowDate) {
+		this.unfollowDate = unfollowDate;
+	}
 
-    public User getUserId() {
-        return userId;
-    }
+	public User getUserId() {
+		return userId;
+	}
 
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
+	public void setUserId(User userId) {
+		this.userId = userId;
+	}
 
-    public Idea getIdeaId() {
-        return ideaId;
-    }
+	public Idea getIdeaId() {
+		return ideaId;
+	}
 
-    public void setIdeaId(Idea ideaId) {
-        this.ideaId = ideaId;
-    }
+	public void setIdeaId(Idea ideaId) {
+		this.ideaId = ideaId;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof FollowIdea)) {
-            return false;
-        }
-        FollowIdea other = (FollowIdea) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
+		if (!(object instanceof FollowIdea)) {
+			return false;
+		}
+		FollowIdea other = (FollowIdea) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "com.dreamsfactory.entity.FollowIdea[ id=" + id + " ]";
-    }
-    
+	@Override
+	public String toString() {
+		return "com.dreamsfactory.entity.FollowIdea[ id=" + id + " ]";
+	}
+
 }

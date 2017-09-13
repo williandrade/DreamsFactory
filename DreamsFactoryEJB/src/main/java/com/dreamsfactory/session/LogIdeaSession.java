@@ -66,4 +66,24 @@ public class LogIdeaSession {
 		return logIdeaDTO;
 	}
 
+	public List<LogIdeaDTO> findByUserId(Integer id) throws Exception {
+		if (id == null) {
+			throw new ArgumentMissingException("IdeaId");
+		}
+
+		Set<LogIdea> logSet = logIdeaDAO.findByUserId(id);
+		Set<LogIdeaDTO> dtoSet = logIdeaMapper.logIdeasToLogIdeaDTOs(logSet);
+
+		return new ArrayList<LogIdeaDTO>(dtoSet);
+	}
+
+	public LogIdeaDTO findLastByUserId(Integer id) throws Exception {
+		if (id == null) {
+			throw new ArgumentMissingException("IdeaId");
+		}
+
+		LogIdea log = logIdeaDAO.findLastByUserId(id);
+		LogIdeaDTO logIdeaDTO = logIdeaMapper.logIdeaToLogIdeaDTO(log);
+		return logIdeaDTO;
+	}
 }

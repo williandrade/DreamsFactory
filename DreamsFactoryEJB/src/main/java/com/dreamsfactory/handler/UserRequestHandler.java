@@ -1,13 +1,16 @@
 package com.dreamsfactory.handler;
 
 import java.util.Date;
+
 import javax.enterprise.context.RequestScoped;
+
+import com.dreamsfactory.dto.UserDTO;
 
 @RequestScoped
 public class UserRequestHandler {
 
 	private String application;
-	private String user;
+	private UserDTO user;
 	private Date startRequest;
 
 	public String getApplication() {
@@ -18,11 +21,11 @@ public class UserRequestHandler {
 		this.application = application;
 	}
 
-	public String getUser() {
+	public UserDTO getUser() {
 		return user;
 	}
 
-	public void setUser(String user) {
+	public void setUser(UserDTO user) {
 		this.user = user;
 	}
 

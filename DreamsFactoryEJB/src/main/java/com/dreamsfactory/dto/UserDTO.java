@@ -11,6 +11,10 @@ public class UserDTO {
 	private String eMail;
 	private String login;
 	private String password;
+	private String uuid;
+	private Date uuidGenerationDate;
+	private Date expirationDate;
+	private Boolean available;
 
 	public Integer getId() {
 		return id;
@@ -66,6 +70,38 @@ public class UserDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public Date getUuidGenerationDate() {
+		return uuidGenerationDate;
+	}
+
+	public void setUuidGenerationDate(Date uuidGenerationDate) {
+		this.uuidGenerationDate = uuidGenerationDate;
+	}
+
+	public Date getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(Date expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
 	}
 
 }

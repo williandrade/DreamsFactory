@@ -16,7 +16,7 @@ import javax.enterprise.context.ApplicationScoped;
 
     value = "org.mapstruct.ap.MappingProcessor",
 
-    date = "2017-09-12T10:33:19-0300",
+    date = "2017-09-13T15:02:33-0300",
 
     comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_144 (Oracle Corporation)"
 
@@ -45,9 +45,19 @@ public class UserMapperImpl implements UserMapper {
 
         userDTO.setBirthDate( user.getBirthDate() );
 
+        userDTO.seteMail( user.geteMail() );
+
         userDTO.setLogin( user.getLogin() );
 
         userDTO.setPassword( user.getPassword() );
+
+        userDTO.setUuid( user.getUuid() );
+
+        userDTO.setUuidGenerationDate( user.getUuidGenerationDate() );
+
+        userDTO.setExpirationDate( user.getExpirationDate() );
+
+        userDTO.setAvailable( user.isAvailable() );
 
         return userDTO;
     }
@@ -74,6 +84,19 @@ public class UserMapperImpl implements UserMapper {
         user.setLogin( userDTO.getLogin() );
 
         user.setPassword( userDTO.getPassword() );
+
+        user.seteMail( userDTO.geteMail() );
+
+        user.setUuid( userDTO.getUuid() );
+
+        user.setUuidGenerationDate( userDTO.getUuidGenerationDate() );
+
+        user.setExpirationDate( userDTO.getExpirationDate() );
+
+        if ( userDTO.getAvailable() != null ) {
+
+            user.setAvailable( userDTO.getAvailable() );
+        }
 
         return user;
     }

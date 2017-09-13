@@ -41,4 +41,26 @@ public class LogIdeaDAO extends GenericDAO<LogIdea> {
 		return result.get(0);
 	}
 
+	public Set<LogIdea> findByUserId(Integer id) {
+		String hql = "Select l from LogIdea l where l.userId.id = :id";
+		Query query = this.getEm().createQuery(hql);
+		query.setParameter("id", id);
+
+		return new HashSet<>(query.getResultList());
+	}
+
+	public LogIdea findLastByUserId(Integer id) {
+		String hql = "Select l from LogIdea l where l.userId.id = :id order by l.logDate desc";
+		Query query = this.getEm().createQuery(hql);
+		query.setParameter("id", id);
+		query.setMaxResults(1);
+
+		List<LogIdea> result = query.getResultList();
+
+		if (result.isEmpty()) {
+			return null;
+		}
+
+		return result.get(0);
+	}
 }

@@ -1,9 +1,12 @@
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/UserDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/UserSession.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/LikeIdeaDAO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/SubscribeIdea.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/UserMapper.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/SubscribeLevel.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/Notification.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/FollowIdeaMapper.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/LikeIdeaSession.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/util/GsonConverterUtil.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/TagDAO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/User.java
@@ -12,7 +15,9 @@
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/LogIdeaMapper.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/ApplicationDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/IdeaMapper.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/FollowIdeaSession.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/FollowIdea.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/util/Md5ConverterUtil.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/GenericDAO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/NotificationTypeMapper.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/IdeaTypeSession.java
@@ -21,6 +26,7 @@
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/exception/ArgumentMissingException.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/TagMapper.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/ApplicationMapper.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/FollowIdeaDAO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/util/RestReponseUtil.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/util/Constants.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/NotificationTypeDTO.java
@@ -31,12 +37,15 @@
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/LogIdeaDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/IdeaType.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/UserDAO.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/FollowIdeaDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/Ressource.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/IdeaTypeDAO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/LogIdea.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/LogIdeaDAO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/NotificationType.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/Idea.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/LoginSession.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/LikeIdeaMapper.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/Application.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/NotificationDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/RessourceProvider.java
@@ -45,7 +54,9 @@
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/RessourceCategory.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/LikeIdea.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/Tag.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/LikeIdeaDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dao/IdeaDAO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/ResponseDTO.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/SignInDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/IdeaTypeDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/IdeaTypeMapper.java

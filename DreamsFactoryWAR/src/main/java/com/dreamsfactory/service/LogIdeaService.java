@@ -60,6 +60,38 @@ public class LogIdeaService {
 		return restReponseUtil.makeReponse(response);
 	}
 
+	@GET
+	@Path("/user/{id}")
+	public Response findByUserId(@PathParam("id") Integer id) {
+		ResponseDTO response = new ResponseDTO();
+
+		try {
+			response.setSuccess(true);
+			response.setPayLoad(logIdeaSession.findByUserId(id));
+		} catch (Exception e) {
+			response.setSuccess(false);
+			response.setMessage(e.getMessage());
+		}
+
+		return restReponseUtil.makeReponse(response);
+	}
+
+	@GET
+	@Path("/user/{id}/last")
+	public Response findLastByUserId(@PathParam("id") Integer id) {
+		ResponseDTO response = new ResponseDTO();
+
+		try {
+			response.setSuccess(true);
+			response.setPayLoad(logIdeaSession.findLastByUserId(id));
+		} catch (Exception e) {
+			response.setSuccess(false);
+			response.setMessage(e.getMessage());
+		}
+
+		return restReponseUtil.makeReponse(response);
+	}
+
 	@PUT
 	public Response create(LogIdeaDTO logIdeaDTO) {
 		ResponseDTO response = new ResponseDTO();

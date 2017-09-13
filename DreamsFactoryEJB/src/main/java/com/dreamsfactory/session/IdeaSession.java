@@ -12,6 +12,7 @@ import com.dreamsfactory.dao.IdeaDAO;
 import com.dreamsfactory.dto.IdeaCreationDTO;
 import com.dreamsfactory.dto.IdeaDTO;
 import com.dreamsfactory.dto.IdeaTypeDTO;
+import com.dreamsfactory.dto.UserDTO;
 import com.dreamsfactory.entity.Idea;
 import com.dreamsfactory.exception.ArgumentMissingException;
 import com.dreamsfactory.mapper.IdeaMapper;
@@ -29,7 +30,10 @@ public class IdeaSession {
 	@Inject
 	private IdeaMapper ideaMapper;
 
-	public IdeaDTO create(IdeaCreationDTO ideaCreationDTO) throws Exception {
+	public IdeaDTO create(IdeaCreationDTO ideaCreationDTO, UserDTO userDTO) throws Exception {
+		if (userDTO == null) {
+			throw new Exception("User is null");
+		}
 		IdeaDTO ideaDTO = new IdeaDTO();
 
 		ideaDTO.setDescription(ideaCreationDTO.getDescription());
@@ -44,8 +48,7 @@ public class IdeaSession {
 
 		ideaDTO.setIdeaType(ideaTypeDTO);
 
-		// TODO setUser
-		ideaDTO.setUserId(1);
+		ideaDTO.setUserId(userDTO.getId());
 
 		Idea idea = ideaMapper.ideaDTOToIdea(ideaDTO);
 		idea = ideaDAO.insert(idea);
