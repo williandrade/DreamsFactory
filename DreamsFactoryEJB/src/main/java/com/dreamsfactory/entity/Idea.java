@@ -8,6 +8,7 @@ package com.dreamsfactory.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -84,6 +85,8 @@ public class Idea implements Serializable {
 	private Set<FollowIdea> followIdeaSet;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
 	private Set<Ressource> ressourceSet;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ideaId", fetch = FetchType.LAZY)
+	private Set<IdeaVersion> ideaHistorySet;
 
 	public Idea() {
 	}
@@ -208,6 +211,14 @@ public class Idea implements Serializable {
 
 	public void setIdeaType(IdeaType ideaType) {
 		this.ideaType = ideaType;
+	}
+
+	public Set<IdeaVersion> getIdeaHistorySet() {
+		return ideaHistorySet;
+	}
+
+	public void setIdeaHistorySet(Set<IdeaVersion> ideaHistorySet) {
+		this.ideaHistorySet = ideaHistorySet;
 	}
 
 	@Override
