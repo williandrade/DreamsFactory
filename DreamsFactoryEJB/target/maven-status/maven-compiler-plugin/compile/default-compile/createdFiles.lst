@@ -53,6 +53,8 @@ com/dreamsfactory/entity/NotificationType.class
 com/dreamsfactory/entity/LikeIdea.class
 com/dreamsfactory/util/Md5ConverterUtil.class
 com/dreamsfactory/session/LikeIdeaSession.class
+com/dreamsfactory/analyzer/Analyzer.class
+com/dreamsfactory/dto/IdeaSearchDTO.class
 com/dreamsfactory/entity/Application.class
 com/dreamsfactory/mapper/IdeaTypeMapperImpl.class
 com/dreamsfactory/dao/FollowIdeaDAO.class
@@ -73,6 +75,7 @@ com/dreamsfactory/mapper/ApplicationMapperImpl.class
 com/dreamsfactory/dto/FollowIdeaDTO.class
 com/dreamsfactory/dto/ResponseDTO.class
 com/dreamsfactory/strategy/AnnotationExclusionStrategy.class
+com/dreamsfactory/analyzer/LuceneIdeaAnalyzer.class
 com/dreamsfactory/mapper/LogIdeaMapper.class
 com/dreamsfactory/dto/ApplicationDTO.class
 com/dreamsfactory/entity/FollowIdea.class

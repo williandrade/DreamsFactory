@@ -17,10 +17,22 @@
         <dependent-module archiveName="mapstruct-1.1.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/mapstruct/mapstruct/1.1.0.Final/mapstruct-1.1.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="java-string-similarity-0.24.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/info/debatty/java-string-similarity/0.24/java-string-similarity-0.24.jar">
+        <dependent-module archiveName="java-string-similarity-1.0.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/info/debatty/java-string-similarity/1.0.0/java-string-similarity-1.0.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="jcip-annotations-1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="lucene-core-6.6.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/lucene/lucene-core/6.6.1/lucene-core-6.6.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="lucene-queryparser-6.6.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/lucene/lucene-queryparser/6.6.1/lucene-queryparser-6.6.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="lucene-queries-6.6.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/lucene/lucene-queries/6.6.1/lucene-queries-6.6.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="lucene-sandbox-6.6.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/lucene/lucene-sandbox/6.6.1/lucene-sandbox-6.6.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="DreamsFactoryWAR-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/DreamsFactoryWAR/DreamsFactoryWAR">

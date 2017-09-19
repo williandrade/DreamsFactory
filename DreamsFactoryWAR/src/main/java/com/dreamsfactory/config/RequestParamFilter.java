@@ -1,8 +1,9 @@
 package com.dreamsfactory.config;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
-import java.util.concurrent.TimeoutException;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
@@ -47,7 +48,7 @@ public class RequestParamFilter implements ContainerRequestFilter {
 		} catch (Exception e) {
 
 		}
-		
+
 		if (!Constants.DEBUG_MODE) {
 
 			if (applicationUuid == null) {
@@ -86,6 +87,15 @@ public class RequestParamFilter implements ContainerRequestFilter {
 					if (user == null) {
 						requestContext.abortWith(Response.status(Status.FORBIDDEN).build());
 						return;
+					} else {
+						LocalDateTime now = LocalDateTime.now();
+						LocalDateTime expirationDate = LocalDateTime.ofInstant(user.getExpirationDate().toInstant(),
+								ZoneId.systemDefault());
+
+						if (expirationDate.isBefore(now)) {
+							requestContext.abortWith(Response.status(Status.FORBIDDEN).build());
+							return;
+						}
 					}
 
 					// } catch (TimeoutException te) {

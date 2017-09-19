@@ -8,18 +8,20 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.dreamsfactory.analyzer.LuceneIdeaAnalyzer;
 import com.dreamsfactory.dao.IdeaDAO;
 import com.dreamsfactory.dto.IdeaCreationDTO;
 import com.dreamsfactory.dto.IdeaDTO;
-import com.dreamsfactory.dto.IdeaVersionDTO;
+import com.dreamsfactory.dto.IdeaSearchDTO;
 import com.dreamsfactory.dto.IdeaTypeDTO;
+import com.dreamsfactory.dto.IdeaVersionDTO;
 import com.dreamsfactory.dto.UserDTO;
 import com.dreamsfactory.entity.Idea;
-import com.dreamsfactory.entity.IdeaType;
 import com.dreamsfactory.exception.ArgumentMissingException;
 import com.dreamsfactory.mapper.IdeaMapper;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
 @Stateless
 @LocalBean
@@ -35,6 +37,9 @@ public class IdeaSession {
 
 	@EJB
 	private IdeaVersionSession ideaVersionSession;
+
+	@Inject
+	private LuceneIdeaAnalyzer luceneIdeaAnalyzer;
 
 	@Inject
 	private IdeaMapper ideaMapper;
@@ -126,9 +131,11 @@ public class IdeaSession {
 		return ideaMapper.ideaToIdeaDTO(idea);
 	}
 
-	public List<IdeaDTO> findSimillar(String description) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<IdeaSearchDTO> findSimillar(String description) {
+		List<IdeaSearchDTO> findAllSearch = ideaDAO.findAllBasic();
+		luceneIdeaAnalyzer.addAll(findAllSearch);
+		List<IdeaSearchDTO> found = luceneIdeaAnalyzer.search(description, 10, 0.9f);
+		return found;
 	}
 
 }

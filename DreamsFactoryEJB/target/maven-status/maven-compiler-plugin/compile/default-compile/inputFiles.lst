@@ -4,6 +4,7 @@
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/SubscribeIdea.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/UserMapper.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/IdeaVersionMapper.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/IdeaSearchDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/SubscribeLevel.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/Notification.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/FollowIdeaMapper.java
@@ -50,7 +51,9 @@
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/LoginSession.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/mapper/LikeIdeaMapper.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/session/IdeaVersionSession.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/analyzer/LuceneIdeaAnalyzer.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/Application.java
+/Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/analyzer/Analyzer.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/NotificationDTO.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/entity/RessourceProvider.java
 /Users/william/Documents/projects/dreamsFactoryWorkspace/DreamsFactory/DreamsFactoryEJB/src/main/java/com/dreamsfactory/dto/IdeaDTO.java
