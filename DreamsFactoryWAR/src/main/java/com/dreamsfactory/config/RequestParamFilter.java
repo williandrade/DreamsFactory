@@ -19,6 +19,7 @@ import javax.ws.rs.ext.Provider;
 import com.dreamsfactory.annotation.OpenMethodAnnotation;
 import com.dreamsfactory.dto.UserDTO;
 import com.dreamsfactory.handler.UserRequestHandler;
+import com.dreamsfactory.session.LoginSession;
 import com.dreamsfactory.session.UserSession;
 import com.dreamsfactory.util.Constants;
 
@@ -36,6 +37,9 @@ public class RequestParamFilter implements ContainerRequestFilter {
 
 	@EJB
 	private UserSession userSession;
+	
+	@EJB
+	private LoginSession loginSession;
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -51,10 +55,10 @@ public class RequestParamFilter implements ContainerRequestFilter {
 
 		if (!Constants.DEBUG_MODE) {
 
-			if (applicationUuid == null) {
-				requestContext.abortWith(Response.status(Status.FORBIDDEN).build());
-				return;
-			}
+			// if (applicationUuid == null) {
+			// requestContext.abortWith(Response.status(Status.FORBIDDEN).build());
+			// return;
+			// }
 
 			try {
 
@@ -88,11 +92,7 @@ public class RequestParamFilter implements ContainerRequestFilter {
 						requestContext.abortWith(Response.status(Status.FORBIDDEN).build());
 						return;
 					} else {
-						LocalDateTime now = LocalDateTime.now();
-						LocalDateTime expirationDate = LocalDateTime.ofInstant(user.getExpirationDate().toInstant(),
-								ZoneId.systemDefault());
-
-						if (expirationDate.isBefore(now)) {
+						if (!loginSession.isTheUserValid(user)) {
 							requestContext.abortWith(Response.status(Status.FORBIDDEN).build());
 							return;
 						}

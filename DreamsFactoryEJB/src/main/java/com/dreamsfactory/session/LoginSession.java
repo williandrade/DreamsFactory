@@ -119,6 +119,14 @@ public class LoginSession {
 		}
 	}
 
+	public Boolean isTheUserValid(UserDTO userDTO) {
+		boolean result = false;
+		if (userDTO.getUuidGenerationDate() != null) {
+			result = isInTime(userDTO.getUuidGenerationDate());
+		}
+		return result;
+	}
+
 	private Boolean isInTime(Date date) {
 		Boolean result = false;
 
