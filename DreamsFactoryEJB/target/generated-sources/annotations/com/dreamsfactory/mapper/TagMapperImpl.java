@@ -16,7 +16,7 @@ import javax.enterprise.context.ApplicationScoped;
 
     value = "org.mapstruct.ap.MappingProcessor",
 
-    date = "2017-09-18T18:30:40-0300",
+    date = "2017-09-19T09:19:05-0300",
 
     comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_144 (Oracle Corporation)"
 

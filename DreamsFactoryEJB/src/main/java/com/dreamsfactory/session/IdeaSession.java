@@ -18,10 +18,14 @@ import com.dreamsfactory.entity.Idea;
 import com.dreamsfactory.entity.IdeaType;
 import com.dreamsfactory.exception.ArgumentMissingException;
 import com.dreamsfactory.mapper.IdeaMapper;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 @Stateless
 @LocalBean
 public class IdeaSession {
+
+	private static final Logger logger = LogManager.getLogger(IdeaSession.class);
 
 	@EJB
 	private IdeaDAO ideaDAO;

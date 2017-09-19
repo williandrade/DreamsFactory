@@ -10,6 +10,9 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.dreamsfactory.dao.FollowIdeaDAO;
 import com.dreamsfactory.dto.FollowIdeaDTO;
 import com.dreamsfactory.entity.FollowIdea;
@@ -21,6 +24,8 @@ import com.dreamsfactory.mapper.FollowIdeaMapper;
 @Stateless
 @LocalBean
 public class FollowIdeaSession {
+
+	private static final Logger logger = LogManager.getLogger(FollowIdeaSession.class);
 
 	@EJB
 	private FollowIdeaDAO followIdeaDAO;
@@ -39,8 +44,10 @@ public class FollowIdeaSession {
 		FollowIdea followIdea = followIdeaDAO.findByIdeaIdAndUserId(ideaId, userId);
 
 		if (followIdea != null) {
+			logger.debug("The user " + userId + " already follow the idea " + ideaId);
 			throw new Exception("Already Following");
 		}
+		logger.debug("The user " + userId + " will follow the idea " + ideaId);
 
 		followIdea = new FollowIdea();
 
@@ -51,6 +58,7 @@ public class FollowIdeaSession {
 		followIdea = followIdeaDAO.insert(followIdea);
 
 		FollowIdeaDTO followIdeaDTO = followIdeaMapper.followIdeaToFollowIdeaDTO(followIdea);
+		logger.debug("The user " + userId + " is now following the idea " + ideaId);
 
 		return followIdeaDTO;
 	}
@@ -60,12 +68,15 @@ public class FollowIdeaSession {
 			throw new ArgumentMissingException("followId");
 		}
 
+		logger.debug("The folow register " + followId + " will be set as unfollow");
+
 		FollowIdea followIdea = followIdeaDAO.findById(followId);
 		followIdea.setUnfollowDate(new Date());
 
 		followIdea = followIdeaDAO.update(followIdea);
 
 		FollowIdeaDTO followIdeaDTO = followIdeaMapper.followIdeaToFollowIdeaDTO(followIdea);
+		logger.debug("The folow register " + followId + " was set as unfollow");
 
 		return followIdeaDTO;
 	}
@@ -78,6 +89,7 @@ public class FollowIdeaSession {
 			throw new ArgumentMissingException("UserId");
 		}
 
+		logger.debug("The user " + userId + " will unfollow the idea " + ideaId);
 		FollowIdea followIdea = followIdeaDAO.findByIdeaIdAndUserId(ideaId, userId);
 
 		if (followIdea == null) {
@@ -89,19 +101,22 @@ public class FollowIdeaSession {
 		followIdea = followIdeaDAO.update(followIdea);
 
 		FollowIdeaDTO followIdeaDTO = followIdeaMapper.followIdeaToFollowIdeaDTO(followIdea);
+		logger.debug("The user " + userId + " is now unfollow the idea " + ideaId);
 
 		return followIdeaDTO;
 	}
 
-	public List<FollowIdeaDTO> findFollowers(Integer followId) throws Exception {
-		if (followId == null) {
+	public List<FollowIdeaDTO> findFollowers(Integer ideaId) throws Exception {
+		if (ideaId == null) {
 			throw new ArgumentMissingException("followId");
 		}
 
-		Set<FollowIdea> FollowIdeaaSet = followIdeaDAO.findFollowers(followId);
+		logger.debug("Finding folowers for idea " + ideaId);
+		Set<FollowIdea> FollowIdeaaSet = followIdeaDAO.findFollowers(ideaId);
 		Set<FollowIdeaDTO> followIdeaDTO = followIdeaMapper.followIdeasToFollowIdeaDTOs(FollowIdeaaSet);
 
 		List<FollowIdeaDTO> followIdeas = new ArrayList<>(followIdeaDTO);
+		logger.debug("Found " + followIdeas.size() + " folowers for idea " + ideaId);
 
 		return followIdeas;
 	}

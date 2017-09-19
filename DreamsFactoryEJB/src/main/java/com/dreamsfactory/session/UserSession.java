@@ -7,6 +7,9 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.dreamsfactory.dao.UserDAO;
 import com.dreamsfactory.dto.UserDTO;
 import com.dreamsfactory.entity.User;
@@ -16,6 +19,8 @@ import com.dreamsfactory.mapper.UserMapper;
 @Stateless
 @LocalBean
 public class UserSession {
+
+	private static final Logger logger = LogManager.getLogger(UserSession.class);
 
 	@EJB
 	private UserDAO userDAO;
@@ -58,7 +63,6 @@ public class UserSession {
 		UserDTO userDTO = userMapper.userToUserDTO(user);
 		return userDTO;
 	}
-	
 
 	public UserDTO create(UserDTO userDTO) throws Exception {
 		if (userDTO.getAvailable() == null) {

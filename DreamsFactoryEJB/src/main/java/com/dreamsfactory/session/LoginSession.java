@@ -10,6 +10,9 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.dreamsfactory.dto.SignInDTO;
 import com.dreamsfactory.dto.UserDTO;
 import com.dreamsfactory.exception.ArgumentMissingException;
@@ -19,6 +22,8 @@ import com.dreamsfactory.util.Md5ConverterUtil;
 @Stateless
 @LocalBean
 public class LoginSession {
+
+	private static final Logger logger = LogManager.getLogger(LoginSession.class);
 
 	@EJB
 	private UserSession userSession;
@@ -43,6 +48,7 @@ public class LoginSession {
 		}
 
 		fromDb = this.updateUuid(fromDb);
+		logger.info("The user " + signInDTO.getLogin() + " is now loggin");
 
 		return fromDb;
 	}
