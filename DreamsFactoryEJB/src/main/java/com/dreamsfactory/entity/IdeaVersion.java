@@ -57,6 +57,9 @@ public class IdeaVersion implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "APPROVED")
 	private boolean approved;
+	@Basic(optional = false)
+	@Column(name = "RECOGNIZED")
+	private boolean recognized;
 
 	public IdeaVersion() {
 	}
@@ -156,6 +159,14 @@ public class IdeaVersion implements Serializable {
 
 	public void setApproved(boolean approved) {
 		this.approved = approved;
+	}
+
+	public boolean isRecognized() {
+		return recognized;
+	}
+
+	public void setRecognized(boolean recognized) {
+		this.recognized = recognized;
 	}
 
 	@Override

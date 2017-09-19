@@ -14,6 +14,7 @@ public class IdeaVersionDTO {
 	private Date changeDate;
 	private Integer ideaId;
 	private Boolean approved;
+	private Boolean recognized;
 
 	public Integer getId() {
 		return id;
@@ -93,6 +94,14 @@ public class IdeaVersionDTO {
 
 	public void setApproved(Boolean approved) {
 		this.approved = approved;
+	}
+
+	public Boolean getRecognized() {
+		return recognized;
+	}
+
+	public void setRecognized(Boolean recognized) {
+		this.recognized = recognized;
 	}
 
 }

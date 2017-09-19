@@ -21,11 +21,16 @@ public class DreamsFactoryConfig extends Application {
 
 		classes.add(com.dreamsfactory.service.IdeaService.class);
 		classes.add(com.dreamsfactory.service.IdeaTypeService.class);
+		classes.add(com.dreamsfactory.service.IdeaVersionService.class);
 
 		classes.add(com.dreamsfactory.service.TagService.class);
 		classes.add(com.dreamsfactory.service.LogIdeaService.class);
 		classes.add(com.dreamsfactory.service.FollowIdeaService.class);
 		classes.add(com.dreamsfactory.service.LikeIdeaService.class);
+
+		classes.add(com.dreamsfactory.service.RessourceService.class);
+		classes.add(com.dreamsfactory.service.RessourceProviderService.class);
+		classes.add(com.dreamsfactory.service.RessourceCategoryService.class);
 
 		return classes;
 	}

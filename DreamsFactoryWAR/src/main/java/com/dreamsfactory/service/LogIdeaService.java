@@ -19,6 +19,7 @@ import com.dreamsfactory.util.RestReponseUtil;
 @Stateless
 @Path("/logidea")
 public class LogIdeaService {
+
 	@EJB
 	private RestReponseUtil restReponseUtil;
 

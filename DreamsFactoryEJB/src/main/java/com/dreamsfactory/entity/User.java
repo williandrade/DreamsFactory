@@ -81,6 +81,8 @@ public class User implements Serializable {
 	private Set<LogIdea> logIdeaSet;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
 	private Set<FollowIdea> followIdeaSet;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
+	private Set<Ressource> ressourceSet;
 	@Size(max = 255)
 	@Column(name = "UUID")
 	private String uuid;

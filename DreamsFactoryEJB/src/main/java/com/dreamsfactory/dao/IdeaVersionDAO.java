@@ -25,4 +25,13 @@ public class IdeaVersionDAO extends GenericDAO<IdeaVersion> {
 		return new HashSet<>(query.getResultList());
 	}
 
+	public Set<IdeaVersion> findByIdeaIdAndApproved(Integer ideaId, Boolean approved) {
+		String hql = "Select i from IdeaVersion i where i.ideaId.id = :id and i.approved = :approved";
+		Query query = this.getEm().createQuery(hql);
+		query.setParameter("id", ideaId);
+		query.setParameter("approved", approved);
+
+		return new HashSet<>(query.getResultList());
+	}
+
 }

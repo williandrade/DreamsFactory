@@ -5,6 +5,15 @@ public class IdeaTypeDTO {
 	private String name;
 	private boolean available;
 
+	public IdeaTypeDTO() {
+		super();
+	}
+
+	public IdeaTypeDTO(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}

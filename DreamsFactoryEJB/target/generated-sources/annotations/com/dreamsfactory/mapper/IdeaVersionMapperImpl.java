@@ -18,7 +18,7 @@ import javax.enterprise.context.ApplicationScoped;
 
     value = "org.mapstruct.ap.MappingProcessor",
 
-    date = "2017-09-19T12:36:25-0300",
+    date = "2017-09-19T15:32:22-0300",
 
     comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_144 (Oracle Corporation)"
 
@@ -59,6 +59,8 @@ public class IdeaVersionMapperImpl implements IdeaVersionMapper {
 
         ideaVersionDTO.setApproved( ideaVersion.isApproved() );
 
+        ideaVersionDTO.setRecognized( ideaVersion.isRecognized() );
+
         return ideaVersionDTO;
     }
 
@@ -98,6 +100,11 @@ public class IdeaVersionMapperImpl implements IdeaVersionMapper {
         if ( ideaVersionDTO.getApproved() != null ) {
 
             ideaVersion.setApproved( ideaVersionDTO.getApproved() );
+        }
+
+        if ( ideaVersionDTO.getRecognized() != null ) {
+
+            ideaVersion.setRecognized( ideaVersionDTO.getRecognized() );
         }
 
         return ideaVersion;

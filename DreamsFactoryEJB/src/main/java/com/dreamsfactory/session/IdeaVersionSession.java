@@ -12,8 +12,10 @@ import javax.inject.Inject;
 
 import com.dreamsfactory.dao.IdeaVersionDAO;
 import com.dreamsfactory.dto.IdeaDTO;
+import com.dreamsfactory.dto.IdeaTypeDTO;
 import com.dreamsfactory.dto.IdeaVersionDTO;
 import com.dreamsfactory.entity.Idea;
+import com.dreamsfactory.entity.IdeaType;
 import com.dreamsfactory.entity.IdeaVersion;
 import com.dreamsfactory.exception.ArgumentMissingException;
 import com.dreamsfactory.mapper.IdeaVersionMapper;
@@ -24,6 +26,9 @@ public class IdeaVersionSession {
 
 	@EJB
 	private IdeaVersionDAO ideaVersionDAO;
+
+	@EJB
+	private IdeaSession ideaSession;
 
 	@Inject
 	private IdeaVersionMapper ideaVersionMapper;
@@ -42,12 +47,14 @@ public class IdeaVersionSession {
 		ideaVersion.setChangeDate(new Date());
 
 		Boolean approved = false;
+		Boolean recognized = false;
 
 		if (ideaDTO.getUserId() == userId) {
 			approved = true;
 		}
 
 		ideaVersion.setApproved(approved);
+		ideaVersion.setRecognized(recognized);
 
 		ideaVersion = ideaVersionDAO.insert(ideaVersion);
 
@@ -65,11 +72,44 @@ public class IdeaVersionSession {
 		return result;
 	}
 
+	public List<IdeaVersionDTO> findByIdeaIdAndApproved(Integer ideaId, Boolean approved) throws Exception {
+		if (ideaId == null) {
+			throw new ArgumentMissingException("ideaId");
+		}
+
+		Set<IdeaVersion> entities = ideaVersionDAO.findByIdeaIdAndApproved(ideaId, approved);
+		List<IdeaVersionDTO> result = new ArrayList<>(ideaVersionMapper.ideaVersionToIdeaVersionDTOs(entities));
+
+		return result;
+	}
+
 	public void acceptVersion(Integer versionId, Integer userId) throws Exception {
 		IdeaVersion ideaVersion = ideaVersionDAO.findById(versionId);
 
 		if (ideaVersion.getIdeaId().getUserId().getId() == userId) {
 			ideaVersion.setApproved(true);
+			ideaVersion.setRecognized(true);
+
+			IdeaDTO ideaDTO = ideaSession.findById(ideaVersion.getIdeaId().getId());
+			ideaDTO.setName(ideaVersion.getName());
+			ideaDTO.setShortDescription(ideaVersion.getShortDescription());
+			ideaDTO.setDescription(ideaVersion.getDescription());
+			ideaDTO.setIdeaType(new IdeaTypeDTO(ideaVersion.getIdeaTypeId()));
+
+			ideaSession.update(ideaDTO);
+
+			ideaVersionDAO.update(ideaVersion);
+		} else {
+			throw new Exception("You are not the owner of this idea");
+		}
+	}
+
+	public void declineVersion(Integer versionId, Integer userId) throws Exception {
+		IdeaVersion ideaVersion = ideaVersionDAO.findById(versionId);
+
+		if (ideaVersion.getIdeaId().getUserId().getId() == userId) {
+			ideaVersion.setApproved(false);
+			ideaVersion.setRecognized(true);
 
 			ideaVersionDAO.update(ideaVersion);
 		} else {
