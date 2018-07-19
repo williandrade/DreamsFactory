@@ -2,16 +2,19 @@ package com.dreamsfactory.service;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.dreamsfactory.annotation.OpenMethodAnnotation;
 import com.dreamsfactory.dto.IdeaCreationDTO;
 import com.dreamsfactory.dto.IdeaDTO;
 import com.dreamsfactory.dto.ResponseDTO;
@@ -34,6 +37,8 @@ public class IdeaService {
 
 	@GET
 	@Path("/{id}")
+	@OpenMethodAnnotation
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response findById(@PathParam("id") Integer id) {
 		ResponseDTO response = new ResponseDTO();
 
@@ -48,7 +53,27 @@ public class IdeaService {
 		return restReponseUtil.makeReponse(response);
 	}
 
+	@GET
+	@Path("/top/{qtd}")
+	@OpenMethodAnnotation
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findTop(@PathParam("qtd") Integer qtd) {
+		ResponseDTO response = new ResponseDTO();
+
+		try {
+			response.setSuccess(true);
+			response.setPayLoad(ideaSession.findTop(qtd));
+		} catch (Exception e) {
+			response.setSuccess(false);
+			response.setMessage(e.getMessage());
+		}
+
+		return restReponseUtil.makeReponse(response);
+	}
+
 	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response create(IdeaCreationDTO ideaCreateDTO) {
 		ResponseDTO response = new ResponseDTO();
 
@@ -64,6 +89,8 @@ public class IdeaService {
 	}
 
 	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response findSimillar(IdeaDTO ideaDTO) {
 		ResponseDTO response = new ResponseDTO();
 
@@ -80,6 +107,7 @@ public class IdeaService {
 
 	@POST
 	@Path("/simillar")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response findSimillar(@FormParam("description") String description) {
 		ResponseDTO response = new ResponseDTO();
 

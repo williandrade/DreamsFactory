@@ -6,6 +6,8 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.dreamsfactory.dto.ResponseDTO;
@@ -28,6 +30,7 @@ public class IdeaVersionService {
 
 	@GET
 	@Path("/idea/{ideaId}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response findAllByIdeaId(@PathParam("ideaId") Integer ideaId) {
 		ResponseDTO response = new ResponseDTO();
 
@@ -44,6 +47,7 @@ public class IdeaVersionService {
 
 	@GET
 	@Path("/idea/{ideaId}/approved")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response findAllByIdeaIdApproved(@PathParam("ideaId") Integer ideaId) {
 		ResponseDTO response = new ResponseDTO();
 
@@ -60,6 +64,7 @@ public class IdeaVersionService {
 
 	@GET
 	@Path("/idea/{ideaId}/pending")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response findAllByIdeaIdPending(@PathParam("ideaId") Integer ideaId) {
 		ResponseDTO response = new ResponseDTO();
 
@@ -76,6 +81,7 @@ public class IdeaVersionService {
 
 	@GET
 	@Path("/{id}/accept")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response acceptVersion(@PathParam("id") Integer id) {
 		ResponseDTO response = new ResponseDTO();
 
@@ -92,6 +98,7 @@ public class IdeaVersionService {
 
 	@GET
 	@Path("/{id}/decline")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response declineVersion(@PathParam("id") Integer id) {
 		ResponseDTO response = new ResponseDTO();
 

@@ -2,6 +2,8 @@
     <wb-module deploy-name="DreamsFactoryEJB">
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-sources/annotations"/>
+        <wb-resource deploy-path="/" source-path="/target/generated-test-sources/test-annotations"/>
         <property name="java-output-path" value="/DreamsFactoryEJB/target/classes"/>
     </wb-module>
 </project-modules>

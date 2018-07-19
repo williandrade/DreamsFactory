@@ -1,5 +1,8 @@
 package com.dreamsfactory.util;
 
+import java.io.InputStreamReader;
+import java.io.Reader;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -17,7 +20,7 @@ public class GsonConverterUtil {
 	@PostConstruct
 	void init() {
 		gson = new GsonBuilder().setExclusionStrategies(new AnnotationExclusionStrategy())
-				.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+				.setDateFormat(Constants.DEFAULT_DATE_FORMAT).create();
 	}
 
 	public String toJson(Object obj) {
@@ -26,6 +29,10 @@ public class GsonConverterUtil {
 
 	public Object fromJson(String json, Class<?> clazz) {
 		return gson.fromJson(json, clazz);
+	}
+
+	public <T> T fromJson(Reader json, Class<T> classOfT) {
+		return gson.fromJson(json, classOfT);
 	}
 
 }

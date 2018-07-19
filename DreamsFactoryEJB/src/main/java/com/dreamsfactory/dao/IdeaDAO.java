@@ -18,8 +18,15 @@ public class IdeaDAO extends GenericDAO<Idea> {
 	}
 
 	public List<IdeaSearchDTO> findAllBasic() {
-		String hql = "Select new com.dreamsfactory.dto.IdeaSearchDTO(i.id, i.shortDescription) from Idea i";
+		String hql = "Select new com.dreamsfactory.dto.IdeaSearchDTO(i.id, i.name, i.shortDescription) from Idea i";
 		Query query = this.getEm().createQuery(hql);
+		return query.getResultList();
+	}
+
+	public List<IdeaSearchDTO> findTop(Integer qtd) {
+		String hql = "Select new com.dreamsfactory.dto.IdeaSearchDTO(i.id, i.name, i.shortDescription, count(li.id)) from Idea i left join i.likeIdeaSet as li group by i.id order by count(li.id) desc";
+		Query query = this.getEm().createQuery(hql);
+		query.setMaxResults(qtd);
 		return query.getResultList();
 	}
 

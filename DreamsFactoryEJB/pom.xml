@@ -11,7 +11,7 @@
 	<packaging>ejb</packaging>
 	<properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-		<org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
+		<org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
 		<org.apache.lucene.version>6.6.1</org.apache.lucene.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -29,9 +29,9 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>unknown.binary</groupId>
-			<artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
-			<version>SNAPSHOT</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>4.3.1.Final</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -52,13 +52,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId> <!-- use mapstruct-jdk8 for Java 8 or higher -->
+			<artifactId>mapstruct-jdk8</artifactId>
 			<version>${org.mapstruct.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>info.debatty</groupId>
 			<artifactId>java-string-similarity</artifactId>
-			<version>RELEASE</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>

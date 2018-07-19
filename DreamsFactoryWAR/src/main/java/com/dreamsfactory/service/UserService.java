@@ -30,7 +30,7 @@ public class UserService {
 	private UserRequestHandler userRequestHandler;
 
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response find() {
 		ResponseDTO response = new ResponseDTO();
 
@@ -47,8 +47,8 @@ public class UserService {
 
 	@GET
 	@Path("/{id}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response findByName(@PathParam("id") Integer id) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findById(@PathParam("id") Integer id) {
 		ResponseDTO response = new ResponseDTO();
 
 		try {

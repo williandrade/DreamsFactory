@@ -1,4 +1,5 @@
 com/dreamsfactory/config/RequestParamFilter.class
+com/dreamsfactory/provider/GsonProvider.class
 com/dreamsfactory/service/IdeaTypeService.class
 com/dreamsfactory/service/RessourceService.class
 com/dreamsfactory/config/ResponseFilter.class

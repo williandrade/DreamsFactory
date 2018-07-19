@@ -76,6 +76,11 @@ public class IdeaSession {
 		return ideaMapper.ideaToIdeaDTO(idea);
 	}
 
+	public List<IdeaSearchDTO> findTop(Integer qtd) throws Exception {
+		List<IdeaSearchDTO> ideas = ideaDAO.findTop(qtd);
+		return ideas;
+	}
+
 	public IdeaDTO edit(IdeaDTO ideaDTO, Integer userId) throws Exception {
 		Idea onDb = ideaDAO.findById(ideaDTO.getId());
 		IdeaDTO onDbDTO = ideaMapper.ideaToIdeaDTO(onDb);
@@ -134,7 +139,7 @@ public class IdeaSession {
 	public List<IdeaSearchDTO> findSimillar(String description) {
 		List<IdeaSearchDTO> findAllSearch = ideaDAO.findAllBasic();
 		luceneIdeaAnalyzer.addAll(findAllSearch);
-		List<IdeaSearchDTO> found = luceneIdeaAnalyzer.search(description, 10, 0.9f);
+		List<IdeaSearchDTO> found = luceneIdeaAnalyzer.search(description, 10);
 		return found;
 	}
 
